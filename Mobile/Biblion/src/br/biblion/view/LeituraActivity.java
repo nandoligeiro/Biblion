@@ -129,7 +129,7 @@ public class LeituraActivity extends DashboardActivity {
 			}
 		});
 
-		// Botão next
+		// next
 		ImageButton btNext = (ImageButton) findViewById(R.id.btNext);
 		btNext.setOnClickListener(new View.OnClickListener() {
 

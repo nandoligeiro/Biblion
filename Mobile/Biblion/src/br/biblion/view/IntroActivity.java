@@ -17,10 +17,10 @@ public class IntroActivity extends DashboardActivity {
 		new Handler().postDelayed(new Runnable() {
 			public void run() {
 
-				Intent minhaAcao = new Intent(IntroActivity.this,
+				Intent myAction = new Intent(IntroActivity.this,
 						HomeActivity.class);
 
-				IntroActivity.this.startActivity(minhaAcao);
+				IntroActivity.this.startActivity(myAction);
 
 				IntroActivity.this.finish();
 			}

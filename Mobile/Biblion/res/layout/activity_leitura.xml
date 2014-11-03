@@ -1,78 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	
-	android:layout_width="fill_parent" android:background="@drawable/background"
-	android:layout_height="fill_parent" android:orientation="vertical">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical" >
 
+    <LinearLayout style="@style/TitleBar" >
 
+        <ImageButton
+            style="@style/TitleBarAction"
+            android:contentDescription="@string/description_home"
+            android:onClick="onClickHome"
+            android:src="@drawable/title_home" />
 
+        <ImageView style="@style/TitleBarSeparator" />
 
-	<LinearLayout  style="@style/TitleBar">
-		<ImageButton style="@style/TitleBarAction"
-			android:contentDescription="@string/description_home" android:src="@drawable/title_home"
-			android:onClick="onClickHome" />
+        <TextView
+            android:id="@+id/tvNomeLivro"
+            style="@style/TitleBarText"
+            android:text="Deuteronomio" />
 
+        <TextView
+            android:id="@+id/tvCap"
+            style="@style/TitleBarCap"
+            android:layout_gravity="left"
+            android:layout_marginLeft="0dip"
+            android:text="Cap" />
 
+        <ImageButton
+            style="@style/TitleBarAction"
+            android:contentDescription="@string/description_about"
+            android:onClick="onClickAbout"
+            android:src="@drawable/title_about" />
 
-		<ImageView style="@style/TitleBarSeparator" />
-		<TextView style="@style/TitleBarText" android:id="@+id/tvNomeLivro"
-			android:text="Deuteronomio" />
+        <!--
+             <ImageButton style="@style/TitleBarAction" android:contentDescription="@string/description_search" 
+			android:src="@drawable/title_search" android:onClick="onClickSearch" />
+        -->
 
-		<TextView style="@style/TitleBarCap" android:id="@+id/tvCap"
-			android:text="Cap" android:layout_gravity="left"
-			android:layout_marginLeft="0dip" />
+    </LinearLayout>
 
-		<ImageButton style="@style/TitleBarAction"
-			android:contentDescription="@string/description_about" android:src="@drawable/title_about"
-			android:onClick="onClickAbout" />
-			
-		<!-- <ImageButton style="@style/TitleBarAction" android:contentDescription="@string/description_search" 
-			android:src="@drawable/title_search" android:onClick="onClickSearch" /> -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dip"
+        android:layout_marginLeft="30dip"
+        android:layout_marginRight="30dip"
+        android:layout_marginTop="2dip" >
 
+        <ImageButton
+            android:id="@+id/btBack"
+            style="@style/TitleBarAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dip"
+            android:src="@drawable/prev"
+            android:text="Button" />
 
+        <ImageButton
+            android:id="@+id/btNext"
+            style="@style/TitleBarAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="120dip"
+            android:src="@drawable/next" >
+        </ImageButton>
+    </LinearLayout>
 
+    <ImageView style="@style/TitleBarSeparator2" />
+<!-- <ImageView style="@style/TitleBarSeparatorRight" /> -->
+    <!-- style="@style/TextBody " -->
 
+    <ViewFlipper
+        android:id="@+id/vf_leitura"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
 
-	</LinearLayout>
-
-
-
-	<LinearLayout 
-	
-	 	android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_gravity="center_horizontal" android:layout_marginLeft="30dip" android:layout_marginRight="30dip" android:layout_marginTop="2dip" android:layout_marginBottom="8dip">
-
-		<ImageButton style="@style/TitleBarAction"
-		android:text="Button" android:id="@+id/btBack" android:layout_width="wrap_content" 
-			android:src="@drawable/prev"
-			android:layout_height="wrap_content" android:layout_marginLeft="30dip"/> 
-			
-			<ImageButton style="@style/TitleBarAction"
-			 android:id="@+id/btNext" 
-			android:src="@drawable/next"
-			android:layout_width="wrap_content" 
-			android:layout_height="wrap_content" android:layout_marginLeft="120dip">
-			
-			</ImageButton>
-			
-			
-	</LinearLayout>
-	<ImageView style="@style/TitleBarSeparator2" />
-	<!--<ImageView style="@style/TitleBarSeparatorRight" />
-	
-	
-	--><!-- style="@style/TextBody " -->
-
-	<ViewFlipper android:id="@+id/vf_leitura"
-		android:layout_width="fill_parent" android:layout_height="wrap_content">
-
-		<ListView android:id="@+id/lvConsulta" android:layout_width="match_parent"
-			android:layout_height="match_parent">
-		</ListView>
-
-	</ViewFlipper>
-
+        <ListView
+            android:id="@+id/lvConsulta"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+    </ViewFlipper>
 
 </LinearLayout>
-
