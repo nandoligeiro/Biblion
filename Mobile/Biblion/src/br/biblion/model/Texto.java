@@ -1,8 +1,7 @@
 package br.biblion.model;
 
-
 public class Texto {
-	
+
 	private int testamento;
 	private int classe;
 	private int livro;
@@ -10,25 +9,19 @@ public class Texto {
 	private int versiculo;
 	private String texto;
 	private String curto;
-	/*public Texto(String curto, int capitulo, int versiculo, String texto) {
-		
-		super();
-		this.setCurto(curto);
-		this.capitulo = capitulo;
-		this.versiculo = versiculo;
-		this.texto = texto;
-		// TODO Auto-generated constructor stub
-	}*/
-	/*public Texto(int testamento, int classe, int livro, int capitulo,
-			int versiculo, String texto) {
-		super();
-		this.testamento = testamento;
-		this.classe = classe;
-		this.livro = livro;
-		this.capitulo = capitulo;
-		this.versiculo = versiculo;
-		this.texto = texto;
-	}*/
+
+	/*
+	 * public Texto(String curto, int capitulo, int versiculo, String texto) {
+	 * 
+	 * super(); this.setCurto(curto); this.capitulo = capitulo; this.versiculo =
+	 * versiculo; this.texto = texto; // TODO Auto-generated constructor stub }
+	 */
+	/*
+	 * public Texto(int testamento, int classe, int livro, int capitulo, int
+	 * versiculo, String texto) { super(); this.testamento = testamento;
+	 * this.classe = classe; this.livro = livro; this.capitulo = capitulo;
+	 * this.versiculo = versiculo; this.texto = texto; }
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -41,6 +34,7 @@ public class Texto {
 		result = prime * result + versiculo;
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -67,55 +61,68 @@ public class Texto {
 			return false;
 		return true;
 	}
+
 	public int getTestamento() {
 		return testamento;
 	}
+
 	public void setTestamento(int testamento) {
 		this.testamento = testamento;
 	}
+
 	public int getClasse() {
 		return classe;
 	}
+
 	public void setClasse(int classe) {
 		this.classe = classe;
 	}
+
 	public int getLivro() {
 		return livro;
 	}
+
 	public void setLivro(int livro) {
 		this.livro = livro;
 	}
+
 	public int getCapitulo() {
 		return capitulo;
 	}
+
 	public void setCapitulo(int capitulo) {
 		this.capitulo = capitulo;
 	}
+
 	public int getVersiculo() {
 		return versiculo;
 	}
+
 	public void setVersiculo(int versiculo) {
 		this.versiculo = versiculo;
 	}
+
 	public String getTexto() {
 		return texto;
 	}
+
 	public void setTexto(String texto) {
 		this.texto = texto;
 	}
+
 	@Override
 	public String toString() {
 		return "Texto [testamento=" + testamento + ", classe=" + classe
 				+ ", livro=" + livro + ", capitulo=" + capitulo
 				+ ", versiculo=" + versiculo + ", texto=" + texto + "]";
 	}
+
 	public void setCurto(String curto) {
 		this.curto = curto;
 	}
+
 	public String getCurto() {
 		return curto;
 	}
-	
-	
 
 }

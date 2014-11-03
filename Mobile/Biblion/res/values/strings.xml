@@ -20,11 +20,14 @@
     <string name="title_home">Home</string>
     <string name="title_search">Search</string>
     
+    
+    <string name="first_cap">Este é o Primeiro Capítulo</string>
+    <string name="last_cap">Este é o Último Capítulo</string>
 
     <string name="default_intro"></string>
     
 
-    <string name="about_intro">Trabalho de Conclusão de Curso (Unisa 2011)</string>
+    <string name="about_intro"></string>
     <string name="search_intro"></string>
 
 

@@ -19,11 +19,7 @@ public class HomeActivity extends DashboardActivity {
 
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		//Bloquear tela sempre como vertical
-		/*this.setRequestedOrientation(
-				ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-		*/
+
 		setContentView(R.layout.activity_home);
 
 		final Spinner spLivro = (Spinner) findViewById(R.id.spLivro);
@@ -34,9 +30,8 @@ public class HomeActivity extends DashboardActivity {
 
 		final DbHelper db = new DbHelper(this);
 
-	
-		//db.checkDataBase();
-		
+		// db.checkDataBase();
+
 		try {
 			db.createDataBase();
 		} catch (IOException e1) {
@@ -50,8 +45,8 @@ public class HomeActivity extends DashboardActivity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		// Popula o 1� spinner com os Livros
+
+		// spinner Livros
 
 		List listaLivro = db.buscarLivros();
 		final ArrayAdapter adapter = new ArrayAdapter(this,
@@ -59,20 +54,14 @@ public class HomeActivity extends DashboardActivity {
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spLivro.setAdapter(adapter);
 
-		// Pega a sele��o do 1� spinner
+		// spinner position
 
 		spLivro.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
 			public void onItemSelected(final AdapterView parent, View v,
 					final int pos, long id) {
 
-				/*
-				 * Toast.makeText(parent.getContext(), " " +
-				 * parent.getItemAtPosition(pos).toString(),
-				 * Toast.LENGTH_LONG).show()
-				 */;
-
-				// Popula o 2� spinner com os Capitulos
+				// spinner cap
 
 				List listaCap = db.buscarCap(spLivro.getSelectedItemId());
 				ArrayAdapter adapter2 = new ArrayAdapter(HomeActivity.this,
@@ -81,14 +70,12 @@ public class HomeActivity extends DashboardActivity {
 
 				spCap.setAdapter(adapter2);
 
-				// Pega a sele��o do 2� spinner
+				// spinner position
 
 				spCap.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
 					public void onItemSelected(AdapterView parentc, View vc,
 							int posc, long idc) {
-
-						// Popula o 3� spinner com os Versiculos
 
 					}
 
@@ -106,8 +93,6 @@ public class HomeActivity extends DashboardActivity {
 			}
 
 		});
-
-		// But�o ler
 
 		ImageButton btConsulta = (ImageButton) findViewById(R.id.btConsulta);
 		btConsulta.setOnClickListener(new View.OnClickListener() {
@@ -166,11 +151,3 @@ public class HomeActivity extends DashboardActivity {
 	}
 
 }
-/*
- * Spinner spLivro = (Spinner) findViewById(R.id.spLivro);
- * 
- * ArrayAdapter adapter = ArrayAdapter.createFromResource( this,
- * R.array.ArrayLivros, android.R.layout.simple_spinner_item);
- * adapter.setDropDownViewResource
- * (android.R.layout.simple_spinner_dropdown_item); spLivro.setAdapter(adapter);
- */

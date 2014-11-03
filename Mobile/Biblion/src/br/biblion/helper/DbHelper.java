@@ -21,45 +21,38 @@ import br.biblion.R;
 import br.biblion.model.Texto;
 
 public class DbHelper extends SQLiteOpenHelper {
-	
+
 	private static final String TAG = DbHelper.class.getSimpleName();
-	//private static String DB_PATH = "/data/data/br.com.biblion/databases/";
-	private static String DB_PATH ="/Biblion/databases/";
+	// private static String DB_PATH = "/data/data/br.com.biblion/databases/";
+	private static String DB_PATH = "/Biblion/databases/";
 	public static final String DB_NAME = "biblion.db";
 	public static final int DB_VERSION = 1;
 	private SQLiteDatabase myDataBase;
 	private final Context myContext;
-	
-	
-	
-
 
 	public DbHelper(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);
 		this.myContext = context;
-		
-		
+
 	}
 
-		
 	public void createDataBase() throws IOException {
 
-		/*File f = new File(Environment.getExternalStorageDirectory() + DB_PATH );
-		f.mkdir();
-		*/// dbDir.mkdirs();
+		/*
+		 * File f = new File(Environment.getExternalStorageDirectory() + DB_PATH
+		 * ); f.mkdir();
+		 */// dbDir.mkdirs();
 
 		boolean dbExist = checkDataBase();
-	
-		
+
 		if (dbExist) {
 
 		} else {
 			this.getReadableDatabase();
-			
 
 			try {
 
-				//copyDataBase();
+				// copyDataBase();
 
 				descompactarBanco();
 			} catch (Exception e) {
@@ -70,24 +63,22 @@ public class DbHelper extends SQLiteOpenHelper {
 
 	void copyDataBase() throws IOException {
 
-		
-		File f = new File(Environment.getExternalStorageDirectory() + DB_PATH );
+		File f = new File(Environment.getExternalStorageDirectory() + DB_PATH);
 		f.mkdirs();
-		
+
 		/*
 		 * File dbDir = myContext.getDir("Data",0); File dbFile = new
 		 * File(DB_PATH,"biblion.db");
 		 */
 		// Abrir local do arquivo de entrada
-		//InputStream myInput = myContext.getAssets().open(DB_NAME);
+		// InputStream myInput = myContext.getAssets().open(DB_NAME);
 		InputStream myInput = myContext.getResources().openRawResource(
 				R.raw.biblion);
 		// BufferedInputStream bis = new BufferedInputStream(myInput);
-		
 
 		// Caminho do diretorio para criar o db vazio
 		String outFileName = f + f.separator + DB_NAME;
-		//FileOutputStream outFileName = DB_PATH + DB_NAME;
+		// FileOutputStream outFileName = DB_PATH + DB_NAME;
 
 		// Abrir o banco vazio
 		OutputStream myOutput = new FileOutputStream(outFileName);
@@ -106,7 +97,6 @@ public class DbHelper extends SQLiteOpenHelper {
 
 	}
 
-	
 	public boolean checkDataBase() {
 
 		SQLiteDatabase checkDB = null;
@@ -115,7 +105,8 @@ public class DbHelper extends SQLiteOpenHelper {
 			String myPath = DB_PATH + DB_NAME;
 			// checkDB = SQLiteDatabase.openDatabase(myPath, null,
 			// SQLiteDatabase.OPEN_READONLY);
-			checkDB = SQLiteDatabase.openDatabase(Environment.getExternalStorageDirectory() + myPath, null,
+			checkDB = SQLiteDatabase.openDatabase(
+					Environment.getExternalStorageDirectory() + myPath, null,
 					SQLiteDatabase.NO_LOCALIZED_COLLATORS);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -134,8 +125,9 @@ public class DbHelper extends SQLiteOpenHelper {
 		String myPath = DB_PATH + DB_NAME;
 		// myDataBase = SQLiteDatabase.openDatabase(myPath, null,
 		// SQLiteDatabase.OPEN_READONLY);
-		myDataBase = SQLiteDatabase.openDatabase(Environment.getExternalStorageDirectory()+ myPath, null,
-			SQLiteDatabase.NO_LOCALIZED_COLLATORS);
+		myDataBase = SQLiteDatabase.openDatabase(
+				Environment.getExternalStorageDirectory() + myPath, null,
+				SQLiteDatabase.NO_LOCALIZED_COLLATORS);
 		// NO_LOCALIZED_COLLATORS
 	}
 
@@ -149,36 +141,51 @@ public class DbHelper extends SQLiteOpenHelper {
 
 	}
 
-	
-	  void descompactarBanco() {
-	  
-	  try { InputStream fis = myContext.getResources().openRawResource(R.raw.biblion);
-	  ZipInputStream zis = new ZipInputStream(new BufferedInputStream(fis)); 
-	  ZipEntry entry;
-	  
-	  // Read each entry from the ZipInputStream until no more entry found 
-	  //indicated by a null return value of the getNextEntry() method. 
-	  while ((entry = zis.getNextEntry()) != null) { int size; byte[] buffer = new
-	  byte[2048];
-	  
-	  //android way to create file: //
-	 // FileOutputStream fos = myContext.openFileOutput(entry.getName(), Context.MODE_PRIVATE);
-	  
-	  //my way to create it in my dir: //1st - create dirs if doesn't exists
-	  File dbDir = new File(Environment.getExternalStorageDirectory() + DB_PATH); 
-	  dbDir.mkdirs(); //2nd open it
-	  String Output = dbDir + dbDir.separator + DB_NAME;
-	  
-	  FileOutputStream fos = new FileOutputStream(Output);
-	  
-	  BufferedOutputStream bos = new BufferedOutputStream(fos, buffer.length);
-	  
-	  while ((size = zis.read(buffer, 0, buffer.length)) != -1) {
-	  bos.write(buffer, 0, size); } bos.flush(); bos.close(); }
-	  
-	  zis.close(); fis.close(); } catch (IOException e) { e.printStackTrace();
-	  } }
-	 
+	void descompactarBanco() {
+
+		try {
+			InputStream fis = myContext.getResources().openRawResource(
+					R.raw.biblion);
+			ZipInputStream zis = new ZipInputStream(
+					new BufferedInputStream(fis));
+			ZipEntry entry;
+
+			// Read each entry from the ZipInputStream until no more entry found
+			// indicated by a null return value of the getNextEntry() method.
+			while ((entry = zis.getNextEntry()) != null) {
+				int size;
+				byte[] buffer = new byte[2048];
+
+				// android way to create file: //
+				// FileOutputStream fos =
+				// myContext.openFileOutput(entry.getName(),
+				// Context.MODE_PRIVATE);
+
+				// my way to create it in my dir: //1st - create dirs if doesn't
+				// exists
+				File dbDir = new File(Environment.getExternalStorageDirectory()
+						+ DB_PATH);
+				dbDir.mkdirs(); // 2nd open it
+				String Output = dbDir + dbDir.separator + DB_NAME;
+
+				FileOutputStream fos = new FileOutputStream(Output);
+
+				BufferedOutputStream bos = new BufferedOutputStream(fos,
+						buffer.length);
+
+				while ((size = zis.read(buffer, 0, buffer.length)) != -1) {
+					bos.write(buffer, 0, size);
+				}
+				bos.flush();
+				bos.close();
+			}
+
+			zis.close();
+			fis.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public ArrayList buscarLivros() {
 
@@ -309,15 +316,12 @@ public class DbHelper extends SQLiteOpenHelper {
 				null);
 		int num = 0;
 		while (c.moveToNext()) {
-			
-		 num = c.getInt(0);
-		
-			
+
+			num = c.getInt(0);
+
 		}
 		return num;
 	}
-	
-	
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
